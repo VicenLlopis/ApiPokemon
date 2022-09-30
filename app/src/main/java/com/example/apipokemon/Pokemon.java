@@ -9,8 +9,6 @@ public class Pokemon {
     private String detailsUrl;
 
 
-
-
     public String getDetailsUrl() {
         return detailsUrl;
     }
@@ -50,7 +48,6 @@ public class Pokemon {
     public void setImage(String image) {
         this.image = image;
     }
-
 
 
     @Override

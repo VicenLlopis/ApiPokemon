@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 public class HttpUtils {
     public static String get(String dataUrl) throws IOException {
         URL url = new URL(dataUrl);

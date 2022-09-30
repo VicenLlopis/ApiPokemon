@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
-    private ArrayAdapter <Pokemon> adapter;
+    private ArrayAdapter<Pokemon> adapter;
 
     @Override
     public View onCreateView(
@@ -36,10 +36,11 @@ public class FirstFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        ArrayList <Pokemon> items= new ArrayList<>();
+
+        ArrayList<Pokemon> items = new ArrayList<>();
 
 
-            adapter= new ArrayAdapter <Pokemon>(
+        adapter = new ArrayAdapter<Pokemon>(
 
                 getContext(),
                 R.layout.lv_pokemon_row,
@@ -48,22 +49,24 @@ public class FirstFragment extends Fragment {
         );
 
         binding.listview1.setAdapter(adapter);
+
         refresh();
 
         super.onViewCreated(view, savedInstanceState);
 
     }
-    void refresh(){
+
+    void refresh() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
 
-        executor.execute(()->{
+        executor.execute(() -> {
             PokemonApi api = new PokemonApi();
             ArrayList<Pokemon> pokemons = api.getPokemons();
 
 
-            handler.post(()-> {
+            handler.post(() -> {
                 adapter.clear();
                 adapter.addAll(pokemons);
             });
