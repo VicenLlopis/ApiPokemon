@@ -22,6 +22,7 @@ public class PokemonApi {
             JSONArray results = jsonResult.getJSONArray("results");
 
             ArrayList <Pokemon> listapokemon = new ArrayList <Pokemon> ();
+
             for (int i = 0; i < result.length(); i++) {
                 JSONObject pokemonJson = results.getJSONObject(i);
 
@@ -31,11 +32,15 @@ public class PokemonApi {
                 pokemon1.setDetailsUrl(pokemonJson.getString("url"));
 
                 String resultDetails = HttpUtils.get(pokemon1.getDetailsUrl());
+
                 JSONObject jsonDetails = new JSONObject(resultDetails);
+                JSONObject sprites = jsonDetails.getJSONObject("sprites");
+                String spriteDefault =sprites.getString("front_default");
 
                 pokemon1.setHeight(jsonDetails.getInt("height"));
+                pokemon1.setImage(spriteDefault);
                 pokemon1.setWeight(jsonDetails.getInt("weight"));
-                //pokemon1.setImage(jsonDetails.getString("image"));
+
 
 
                 listapokemon.add(pokemon1);
