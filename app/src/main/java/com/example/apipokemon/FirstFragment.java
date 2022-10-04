@@ -39,6 +39,7 @@ public class FirstFragment extends Fragment {
 
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
 
@@ -79,6 +80,10 @@ public class FirstFragment extends Fragment {
         executor.execute(() -> {
             PokemonApi api = new PokemonApi();
             ArrayList<Pokemon> pokemons = api.getPokemons();
+
+            System.out.println(pokemons);
+
+
 
 
             handler.post(() -> {
