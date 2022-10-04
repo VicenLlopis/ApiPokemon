@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PokemonApi {
-
-
     ArrayList<Pokemon> getPokemons() {
-        String url = "https://pokeapi.co/api/v2/pokemon/";
+        String url = "https://pokeapi.co/api/v2/pokemon";
 
         try {
             String result = HttpUtils.get(url);
@@ -27,15 +25,14 @@ public class PokemonApi {
                 JSONObject pokemonJson = results.getJSONObject(i);
 
                 Pokemon pokemon1 = new Pokemon();
-
                 pokemon1.setName(pokemonJson.getString("name"));
                 pokemon1.setDetailsUrl(pokemonJson.getString("url"));
 
-                String resultDetails = HttpUtils.get(pokemon1.getDetailsUrl());
+                 String resultDetails = HttpUtils.get(pokemon1.getDetailsUrl());
 
-                JSONObject jsonDetails = new JSONObject(resultDetails);
-                JSONObject sprites = jsonDetails.getJSONObject("sprites");
-                String spriteDefault =sprites.getString("front_default");
+                 JSONObject jsonDetails = new JSONObject(resultDetails);
+                 JSONObject sprites = jsonDetails.getJSONObject("sprites");
+                 String spriteDefault =sprites.getString("front_default");
 
                 pokemon1.setHeight(jsonDetails.getInt("height"));
                 pokemon1.setImage(spriteDefault);
