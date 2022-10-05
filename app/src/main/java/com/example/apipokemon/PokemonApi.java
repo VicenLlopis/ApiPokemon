@@ -16,12 +16,15 @@ public class PokemonApi {
         try {
             String result = HttpUtils.get(url);
 
+
             JSONObject jsonResult = new JSONObject(result);
             JSONArray results = jsonResult.getJSONArray("results");
 
-            ArrayList <Pokemon> listapokemon = new ArrayList <Pokemon> ();
+            ArrayList<Pokemon> listaPokemon = new ArrayList<Pokemon>();
 
             for (int i = 0; i < result.length(); i++) {
+                try {
+
                 JSONObject pokemonJson = results.getJSONObject(i);
 
                 Pokemon pokemon1 = new Pokemon();
@@ -40,11 +43,14 @@ public class PokemonApi {
 
 
 
-                listapokemon.add(pokemon1);
+                listaPokemon.add(pokemon1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
-
-            Log.e("XXX Pokemons XXX", result);
+           // System.out.println(listaPokemon);
+           return listaPokemon;
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();

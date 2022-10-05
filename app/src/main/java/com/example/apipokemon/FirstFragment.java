@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,7 @@ public class FirstFragment extends Fragment {
 
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
 
@@ -55,23 +58,25 @@ public class FirstFragment extends Fragment {
 
         refresh();
 
+        setHasOptionsMenu(true);
+
         super.onViewCreated(view, savedInstanceState);
 
 
     }
 
 
-
     public  boolean onOptionItemSelected(@NonNull MenuItem item){
+
         if(item.getItemId()== R.id.refresh){
             refresh();
         }
-        return super.onContextItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
     private void refresh() {
 
-        Toast.makeText(getContext(),"Refrscando..", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),"Refrecando...", Toast.LENGTH_LONG).show();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -79,6 +84,10 @@ public class FirstFragment extends Fragment {
         executor.execute(() -> {
             PokemonApi api = new PokemonApi();
             ArrayList<Pokemon> pokemons = api.getPokemons();
+
+        //    System.out.println(pokemons);
+
+
 
 
             handler.post(() -> {
@@ -94,6 +103,12 @@ public class FirstFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
     }
 
 }
