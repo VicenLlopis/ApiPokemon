@@ -1,5 +1,6 @@
 package com.example.apipokemon;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.core.view.MenuHost;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 
 import com.example.apipokemon.databinding.FragmentFirstBinding;
 
@@ -77,6 +79,17 @@ public class FirstFragment extends Fragment {
     private void refresh() {
 
         Toast.makeText(getContext(),"Refrecando...", Toast.LENGTH_LONG).show();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        String tipo = preferences.getString("tipo","");
+
+        if(!tipo.equals("")){
+
+        }else if (tipo.equals("tipo")){
+
+        }
+
+
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 

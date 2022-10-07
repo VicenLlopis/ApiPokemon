@@ -15,8 +15,8 @@ public PokemonAdapter(Context context, int resource, ArrayList<Pokemon> objects)
         super(context, resource, objects);
         }
    /* @Override
-   public View getView(int position, View convertView, ViewGroup parent) {
-        // Obtenim l'objecte en la possició corresponent
+  public View getView(int position, View convertView, ViewGroup parent) {
+       /// Obtenim l'objecte en la possició corresponent
         Pokemon pokemon = getItem(position);
         Log.w("XXXX", pokemon.toString());
 
@@ -28,8 +28,8 @@ public PokemonAdapter(Context context, int resource, ArrayList<Pokemon> objects)
         }
 
         // Unim el codi en les Views del Layout
-        TextView tvTitle = convertView.findViewById(R.id.);
-        TextView tvReleaseDate = convertView.findViewById(R.id.tvReleaseDate);
+        TextView textView = convertView.findViewById(R.id.txtListName);
+        TextView  = convertView.findViewById(R.id.tvReleaseDate);
         ImageView ivPosterImage = convertView.findViewById(R.id.ivPosterImage);
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
