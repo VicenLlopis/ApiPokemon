@@ -64,7 +64,6 @@ public class FirstFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-
     }
 
 
