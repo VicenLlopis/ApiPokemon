@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuHost;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceManager;
 
@@ -57,10 +58,21 @@ public class FirstFragment extends Fragment {
         );
 
         binding.listview1.setAdapter(adapter);
+      //  binding.listview1.setOnItemClickListener(adapter);
+
+        Bundle datos = new Bundle();
+
 
         refresh();
 
         setHasOptionsMenu(true);
+
+        PokemonViewModel viewModel =new ViewModelProvider(getActivity()).get(PokemonViewModel.class);
+        
+        viewModel.getPokemones().observe(getActivity(), pokemons -> {
+            adapter.clear();
+            adapter.addAll(pokemons);
+        });
 
         super.onViewCreated(view, savedInstanceState);
 
