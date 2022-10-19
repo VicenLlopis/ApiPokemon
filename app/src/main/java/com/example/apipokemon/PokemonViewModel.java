@@ -2,9 +2,6 @@ package com.example.apipokemon;
 
 import android.app.Application;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -19,17 +16,22 @@ import java.util.concurrent.Executors;
 public class PokemonViewModel extends AndroidViewModel {
 
     private final Application app;
+    private final PokemonDb db;
     private MutableLiveData<List<Pokemon>> pokemones;
+    private Pokemon pokemonDao;
 
 
     public PokemonViewModel(@NonNull Application application) {
         super(application);
         this.app =application;
+        this.db =PokemonDb.getDatabase(this.app);
+        this.pokemonDao = this.db.getPokemonDao();
     }
 
     public MutableLiveData<List<Pokemon>> getPokemones(){
 
         if(pokemones==null){
+            pokemones = new MutableLiveData<>();
             refresh();
         }
 
@@ -48,6 +50,7 @@ public class PokemonViewModel extends AndroidViewModel {
             ArrayList<Pokemon> pokemons = api.getPokemons();
 
             this.pokemones.postValue(pokemons);
+
 
 
         });

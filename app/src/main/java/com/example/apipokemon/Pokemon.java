@@ -2,6 +2,10 @@ package com.example.apipokemon;
 
 public class Pokemon {
 
+    public Pokemon() {
+
+    }
+
     private String name;
     private int weight;
     private int height;
