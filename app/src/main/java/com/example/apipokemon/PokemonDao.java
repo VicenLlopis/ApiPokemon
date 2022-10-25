@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface PokemonDao {
-    @Query("select * from pokemon")
+   // @Query("select * from pokemon")
     LiveData<List<Pokemon>> getpokemons();
 
     @Insert
@@ -22,8 +22,9 @@ public interface PokemonDao {
     @Delete
     void deletePokemon(Pokemon pokemon);
 
-    @Query("DELETE FROM pokemon")
+  //  @Query("DELETE FROM pokemon")
     void deletePokemon();
+
 }
 
 

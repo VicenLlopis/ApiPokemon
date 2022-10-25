@@ -12,16 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuHost;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceManager;
-
 import com.example.apipokemon.databinding.FragmentFirstBinding;
-
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;

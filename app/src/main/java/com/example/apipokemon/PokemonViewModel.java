@@ -2,12 +2,10 @@ package com.example.apipokemon;
 
 import android.app.Application;
 import android.content.SharedPreferences;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.preference.PreferenceManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;

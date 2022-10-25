@@ -34,10 +34,12 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon> {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.lv_pokemon_row, parent, false);
+        } else {
+            binding = (LvPokemonRowBinding) convertView.getTag();
         }
 
         // Unim el codi en les Views del Layout
-        TextView txtListName = convertView.findViewById(R.id.txtListName);
+             TextView txtListName = convertView.findViewById(R.id.txtListName);
             ImageView imagenPokemon = convertView.findViewById(R.id.imagenPokemon);
 
 
@@ -45,7 +47,8 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon> {
         txtListName.setText(pokemon.getName());
         Glide.with(getContext()).load(pokemon.getImage()).into(imagenPokemon);
 
-        // Retornem la View replena per a mostrar-la
-        return convertView;
+
+        // Retornem la View replena per a mostrarla
+        return binding.getRoot();
     }
 }
